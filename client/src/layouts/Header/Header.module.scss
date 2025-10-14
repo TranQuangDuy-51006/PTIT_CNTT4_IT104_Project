@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  height: 83px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.158);
+  span {
+    font-weight: 700;
+  }
+}
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.inputSearch {
+  border: 1px solid rgb(214, 214, 214);
+  padding: 8px 16px;
+  border-radius: 10px;
+  input {
+    width: 700px;
+    border: none;
+    outline: none;
+  }
+}
+
+.avt {
+  width: 70px;
+}
+
+.setting {
+  position: relative;
+}
+
+.menu {
+  border: 1px solid #f2f4f7;
+  box-shadow: 0px 4px 6px -2px rgba(16, 24, 40, 0.03);
+  background-color: white;
+  position: absolute;
+  z-index: 3000;
+  right: 20px;
+  width: 250px;
+  padding: 10px;
+  border-radius: 10px;
+  li {
+    list-style: none;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: rgb(89, 139, 139);
+    }
+  }
+}
