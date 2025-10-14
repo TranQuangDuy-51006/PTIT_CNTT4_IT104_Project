@@ -14,25 +14,34 @@ export default function Pagination({
 }: PaginationProps) {
   const getPageNumbers = () => {
     const pages: (number | string)[] = [];
-    let prevAdded = false;
 
-    for (let i = 1; i <= totalPages; i++) {
-      if (
-        i === 1 ||
-        i === totalPages ||
-        (i >= currentPage - 1 && i <= currentPage + 1)
-      ) {
-        pages.push(i);
-        prevAdded = true;
-      } else {
-        if (prevAdded) {
-          pages.push("...");
-          prevAdded = false;
-        }
-      }
+    if (totalPages <= 7) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+      return pages;
     }
 
-    return pages;
+    pages.push(1);
+
+    const left = Math.max(2, currentPage - 1);
+    const right = Math.min(totalPages - 1, currentPage + 1);
+
+    if (left > 2) pages.push("...");
+
+    for (let i = left; i <= right; i++) {
+      pages.push(i);
+    }
+
+    if (right < totalPages - 1) pages.push("...");
+
+    pages.push(totalPages);
+
+    const unique: (number | string)[] = [];
+    pages.forEach((p) => {
+      if (unique.length === 0 || unique[unique.length - 1] !== p)
+        unique.push(p);
+    });
+
+    return unique;
   };
 
   const pageNumbers = getPageNumbers();
@@ -43,7 +52,7 @@ export default function Pagination({
         className={`${styles.navButton} ${
           currentPage === 1 ? styles.disabled : ""
         }`}
-        onClick={() => onPageChange(currentPage - 1)}
+        onClick={() => onPageChange(Math.max(1, currentPage - 1))}
         disabled={currentPage === 1}
       >
         <FaArrowLeft /> Previous
@@ -52,12 +61,12 @@ export default function Pagination({
       <div className={styles.pages}>
         {pageNumbers.map((num, index) =>
           num === "..." ? (
-            <span key={index} className={styles.dots}>
+            <span key={`dots-${index}`} className={styles.dots}>
               ...
             </span>
           ) : (
             <button
-              key={num}
+              key={`page-${num}`}
               onClick={() => onPageChange(Number(num))}
               className={`${styles.pageButton} ${
                 currentPage === num ? styles.active : ""
@@ -73,7 +82,7 @@ export default function Pagination({
         className={`${styles.navButton} ${
           currentPage === totalPages ? styles.disabled : ""
         }`}
-        onClick={() => onPageChange(currentPage + 1)}
+        onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
         disabled={currentPage === totalPages}
       >
         Next <FaArrowRight />

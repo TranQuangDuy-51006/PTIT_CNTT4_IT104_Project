@@ -8,6 +8,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { useAppDispatch } from "../../../store/hooks";
 import { registerUser } from "../../../store/features/regSlice";
+import authService from "../../../service/authServices";
 
 type RegValue = {
   firstName: string;
@@ -65,7 +66,7 @@ export default function Register() {
       newMsg.email = "Cannot be left blank";
       hasError = true;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-      newMsg.email = "Cannot be left blank";
+      newMsg.email = "Invalid email format";
       hasError = true;
     } else newMsg.email = label.email;
 
@@ -86,20 +87,28 @@ export default function Register() {
     } else newMsg.passConfirm = label.passConfirm;
 
     setMessage(newMsg);
-
-    if (hasError) {
-      return;
-    }
-
-    const payload = {
-      firstName: data.firstName,
-      lastName: data.lastName,
-      email: data.email,
-      password: data.pass,
-    };
+    if (hasError) return;
 
     setIsLoading(true);
     try {
+      const allUsers = await authService.getAll();
+      const existed = allUsers.find(
+        (u) => u.email.toLowerCase() === data.email.toLowerCase()
+      );
+
+      if (existed) {
+        toast.error("Email already registered!");
+        setIsLoading(false);
+        return;
+      }
+
+      const payload = {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        password: data.pass,
+      };
+
       await dispatch(registerUser(payload)).unwrap();
       toast.success("Registration successful!");
       navigate("/login");
@@ -209,8 +218,7 @@ export default function Register() {
           </Button>
 
           <p className={styles.switchText}>
-            Already have an account?
-            <Link to="/login">Login</Link>
+            Already have an account? <Link to="/login">Login</Link>
           </p>
         </form>
       </div>

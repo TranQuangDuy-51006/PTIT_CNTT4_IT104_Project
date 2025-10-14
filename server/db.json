@@ -48,6 +48,13 @@
       "lastName": "1",
       "email": "jiren@gmail.com",
       "password": "13131313"
+    },
+    {
+      "id": "e3cc",
+      "firstName": "Tao",
+      "lastName": "ư",
+      "email": "jiren@gmail.com",
+      "password": "111111"
     }
   ],
   "articles": [
@@ -84,11 +91,11 @@
     {
       "id": "a975",
       "title": "21111",
-      "content": "ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp",
+      "content": "pppppppppp",
       "mood": "3",
       "status": "public",
       "image": "https://res.cloudinary.com/dxbxoyen9/image/upload/v1760279913/jphe6xi7kwuoqa5v8t7g.png",
-      "date": "2025-10-12T14:38:33.527Z",
+      "date": "2025-10-14T15:19:30.348Z",
       "entryId": "4aeb"
     },
     {

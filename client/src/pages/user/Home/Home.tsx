@@ -20,7 +20,7 @@ export default function Home() {
   const { keyword } = useAppSelector((state) => state.search);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 1;
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   useEffect(() => {

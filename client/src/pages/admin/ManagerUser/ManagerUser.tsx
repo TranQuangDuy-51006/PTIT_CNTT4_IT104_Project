@@ -17,25 +17,31 @@ export default function ManagerUser() {
   const [users, setUsers] = useState<UserUI[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const usersPerPage = 1;
+
   useEffect(() => {
     const fetchUsers = async () => {
       try {
         setLoading(true);
         const data = await authService.getAll();
-        setUsers(
-          data.map((u) => ({
+
+        const formattedUsers = data
+          .map((u) => ({
             ...u,
             name: `${u.firstName} ${u.lastName}`,
             username: `@${u.firstName.toLowerCase()}`,
             status: "hoạt động",
           }))
-        );
+          .sort((a, b) => (b.id ?? 0) - (a.id ?? 0));
+
+        setUsers(formattedUsers);
       } catch (error) {
-        console.error("Lấy dữ liệu user thất bại:", error);
+        console.error(error);
       } finally {
         setLoading(false);
       }
     };
+
     fetchUsers();
   }, []);
 
@@ -45,12 +51,17 @@ export default function ManagerUser() {
       (u.email?.toLowerCase().includes(searchTerm.toLowerCase()) ?? false)
   );
 
-  const usersPerPage = 3;
+  useEffect(() => {
+    const totalPagesNow = Math.ceil(filteredUsers.length / usersPerPage);
+    if (currentPage > totalPagesNow && totalPagesNow > 0) {
+      setCurrentPage(totalPagesNow);
+    }
+  }, [filteredUsers, currentPage, usersPerPage]);
+
   const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
-  const displayedUsers = filteredUsers.slice(
-    (currentPage - 1) * usersPerPage,
-    currentPage * usersPerPage
-  );
+  const indexOfLast = currentPage * usersPerPage;
+  const indexOfFirst = indexOfLast - usersPerPage;
+  const displayedUsers = filteredUsers.slice(indexOfFirst, indexOfLast);
 
   return (
     <div className={styles.main}>
@@ -76,6 +87,8 @@ export default function ManagerUser() {
 
       {loading ? (
         <p>Loading...</p>
+      ) : filteredUsers.length === 0 ? (
+        <p>Không có người dùng nào</p>
       ) : (
         <table className={styles.table}>
           <thead>
@@ -112,13 +125,15 @@ export default function ManagerUser() {
         </table>
       )}
 
-      <div className={styles.boxPagi}>
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={(page) => setCurrentPage(page)}
-        />
-      </div>
+      {totalPages > 1 && (
+        <div className={styles.boxPagi}>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={(page) => setCurrentPage(page)}
+          />
+        </div>
+      )}
     </div>
   );
 }

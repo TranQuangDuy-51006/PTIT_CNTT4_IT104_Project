@@ -21,7 +21,7 @@ export default function ManagerArticle() {
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [editingArticle, setEditingArticle] = useState<Article | null>(null);
-  const itemsPerPage = 2;
+  const itemsPerPage = 4;
 
   useEffect(() => {
     dispatch(fetchArticles());

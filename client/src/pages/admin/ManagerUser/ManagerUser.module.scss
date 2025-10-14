@@ -130,4 +130,49 @@
 .boxPagi {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
+
+  :global(.ant-pagination) {
+    font-size: 14px;
+  }
+
+  :global(.ant-pagination-item) {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: all 0.2s;
+    background-color: #fff;
+  }
+
+  :global(.ant-pagination-item:hover) {
+    border-color: #7a5af8;
+    color: #7a5af8;
+  }
+
+  :global(.ant-pagination-item-active) {
+    background-color: #7a5af8 !important;
+    border-color: #7a5af8 !important;
+  }
+
+  :global(.ant-pagination-item-active a) {
+    color: #fff !important;
+  }
+
+  :global(.ant-pagination-prev),
+  :global(.ant-pagination-next) {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: all 0.2s;
+    background-color: #fff;
+  }
+
+  :global(.ant-pagination-prev:hover),
+  :global(.ant-pagination-next:hover) {
+    border-color: #7a5af8;
+    color: #7a5af8;
+  }
+
+  :global(.ant-pagination-disabled) {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
