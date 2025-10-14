@@ -1,4 +1,3 @@
-// src/services/uploadService.ts
 import axios from "axios";
 
 export const uploadToCloudinary = async (file: File) => {

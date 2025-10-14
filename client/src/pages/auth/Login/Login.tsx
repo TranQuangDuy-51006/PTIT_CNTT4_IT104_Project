@@ -39,12 +39,12 @@ export default function Login() {
     let hasError = false;
 
     if (!data.email.trim()) {
-      newMsg.email = "Email không được để trống";
+      newMsg.email = "Email cannot be blank";
       hasError = true;
     } else newMsg.email = label.email;
 
     if (!data.password.trim()) {
-      newMsg.password = "Mật khẩu không được để trống";
+      newMsg.password = "Password cannot be blank";
       hasError = true;
     } else newMsg.password = label.password;
 
@@ -55,7 +55,7 @@ export default function Login() {
     }
 
     if (data.email === admin.email && data.password === admin.pass) {
-      toast.success("Đăng nhập thành công!");
+      toast.success("Login successful!");
       setStorage("ad", admin);
       navigate("/admin/user");
       return;
@@ -66,7 +66,7 @@ export default function Login() {
 
   useEffect(() => {
     if (isLogin) {
-      toast.success("Đăng nhập thành công!");
+      toast.success("Login successful!");
       if (user?.email === admin.email && data.password === data.password) {
         navigate("/admin/user");
       } else {
@@ -138,7 +138,7 @@ export default function Login() {
             </div>
 
             <Button primary maxcontent>
-              {loading ? "Đang đăng nhập..." : "Login"}
+              {loading ? "..." : "Login"}
             </Button>
           </form>
 

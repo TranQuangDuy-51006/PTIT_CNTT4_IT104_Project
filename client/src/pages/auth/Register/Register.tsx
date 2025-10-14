@@ -52,36 +52,36 @@ export default function Register() {
     const newMsg: any = {};
 
     if (!data.firstName.trim()) {
-      newMsg.firstName = "Họ không được để trống";
+      newMsg.firstName = "Cannot be left blank";
       hasError = true;
     } else newMsg.firstName = label.firstName;
 
     if (!data.lastName.trim()) {
-      newMsg.lastName = "Tên không được để trống";
+      newMsg.lastName = "Cannot be left blank";
       hasError = true;
     } else newMsg.lastName = label.lastName;
 
     if (!data.email.trim()) {
-      newMsg.email = "Email không được để trống";
+      newMsg.email = "Cannot be left blank";
       hasError = true;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-      newMsg.email = "Email phải đúng định dạng";
+      newMsg.email = "Cannot be left blank";
       hasError = true;
     } else newMsg.email = label.email;
 
     if (!data.pass.trim()) {
-      newMsg.pass = "Mật khẩu không được để trống";
+      newMsg.pass = "Cannot be left blank";
       hasError = true;
     } else if (data.pass.length < 6) {
-      newMsg.pass = "Mật khẩu tối thiểu 6 ký tự";
+      newMsg.pass = "Password must be at least 6 characters long";
       hasError = true;
     } else newMsg.pass = label.pass;
 
     if (!data.passConfirm.trim()) {
-      newMsg.passConfirm = "Mật khẩu xác nhận không được để trống";
+      newMsg.passConfirm = "Cannot be left blank";
       hasError = true;
     } else if (data.passConfirm !== data.pass) {
-      newMsg.passConfirm = "Mật khẩu phải trùng khớp";
+      newMsg.passConfirm = "Passwords must match";
       hasError = true;
     } else newMsg.passConfirm = label.passConfirm;
 
@@ -101,10 +101,10 @@ export default function Register() {
     setIsLoading(true);
     try {
       await dispatch(registerUser(payload)).unwrap();
-      toast.success("Đăng ký thành công!");
+      toast.success("Registration successful!");
       navigate("/login");
     } catch (err: any) {
-      toast.error(err || "Đăng ký thất bại");
+      toast.error(err || "Registration failed");
     } finally {
       setIsLoading(false);
     }
@@ -205,7 +205,7 @@ export default function Register() {
           </div>
 
           <Button maxcontent primary>
-            {isLoading ? "Submitting..." : "Sign up"}
+            {isLoading ? "..." : "Sign up"}
           </Button>
 
           <p className={styles.switchText}>

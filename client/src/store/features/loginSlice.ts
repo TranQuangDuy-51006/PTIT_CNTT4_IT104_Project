@@ -17,7 +17,7 @@ export const loginUser = createAsyncThunk(
       const user = await authService.login(payload);
       return user;
     } catch (err: any) {
-      return rejectWithValue(err.message || "Đăng nhập thất bại");
+      return rejectWithValue(err.message || "Login failed");
     }
   }
 );

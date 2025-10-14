@@ -52,7 +52,6 @@ export default function ModalAdd({ onClose, editingArticle }: ModalAddProps) {
   });
   const [uploading, setUploading] = useState(false);
 
-  // --- Populate form khi edit
   useEffect(() => {
     if (editingArticle) {
       setFormData(editingArticle);
@@ -63,7 +62,6 @@ export default function ModalAdd({ onClose, editingArticle }: ModalAddProps) {
     dispatch(fetchCategories());
   }, [dispatch]);
 
-  // ---------------- HANDLE CHANGE ----------------
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -73,7 +71,6 @@ export default function ModalAdd({ onClose, editingArticle }: ModalAddProps) {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // ---------------- HANDLE UPLOAD ----------------
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -108,11 +105,9 @@ export default function ModalAdd({ onClose, editingArticle }: ModalAddProps) {
       };
 
       if (editingArticle) {
-        // --- UPDATE ---
         await dispatch(updateArticle(articleToSubmit)).unwrap();
         toast.success(" Bài viết đã được cập nhật thành công");
       } else {
-        // --- ADD NEW ---
         await dispatch(addArticle(articleToSubmit)).unwrap();
         toast.success(" Bài viết đã được thêm thành công");
       }
@@ -138,7 +133,6 @@ export default function ModalAdd({ onClose, editingArticle }: ModalAddProps) {
         </div>
 
         <form className={styles.form} onSubmit={handleSubmit}>
-          {/* Title */}
           <div>
             <label>Title:</label>
             <input
@@ -149,7 +143,6 @@ export default function ModalAdd({ onClose, editingArticle }: ModalAddProps) {
             />
           </div>
 
-          {/* Category */}
           <div>
             <label>Article Categories:</label>
             <select
@@ -243,7 +236,7 @@ export default function ModalAdd({ onClose, editingArticle }: ModalAddProps) {
 
           <div className={styles.btnContainer}>
             <Button success>
-              {uploading ? "Uploading..." : editingArticle ? "Update" : "Add"}
+              {uploading ? "..." : editingArticle ? "Update" : "Add"}
             </Button>
           </div>
         </form>

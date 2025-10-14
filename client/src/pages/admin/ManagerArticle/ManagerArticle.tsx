@@ -21,15 +21,13 @@ export default function ManagerArticle() {
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [editingArticle, setEditingArticle] = useState<Article | null>(null);
-  const itemsPerPage = 2; // số bài viết/trang
+  const itemsPerPage = 2;
 
-  // --- Lấy dữ liệu khi component mount ---
   useEffect(() => {
     dispatch(fetchArticles());
     dispatch(fetchCategories());
   }, [dispatch]);
 
-  // --- Chỉnh sửa trạng thái ---
   const handleStatusChange = async (id: number, newStatus: string) => {
     const article = articles.find((a) => a.id === id);
     if (!article) return;
@@ -38,17 +36,16 @@ export default function ManagerArticle() {
       await dispatch(
         updateArticle({ ...article, status: newStatus as "public" | "private" })
       ).unwrap();
-      toast.success("Cập nhật trạng thái thành công!");
+      toast.success("Status updated successfully!");
     } catch {
-      toast.error("Lỗi khi cập nhật trạng thái!");
+      toast.error("Error updating status!");
     }
   };
 
-  // --- Xóa bài viết ---
   const handleDelete = async (id: number) => {
     const result = await Swal.fire({
-      title: "Bạn có chắc muốn xoá bài viết này?",
-      text: "Hành động này không thể hoàn tác!",
+      title: "Are you sure you want to delete this post?",
+      text: "This action cannot be undone!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#d33",
@@ -60,9 +57,8 @@ export default function ManagerArticle() {
     if (result.isConfirmed) {
       try {
         await dispatch(deleteArticle(id)).unwrap();
-        toast.success("Đã xoá bài viết!");
+        toast.success("Post deleted!");
 
-        // Nếu trang hiện tại trống, lùi về trang trước
         const totalPagesAfterDelete = Math.ceil(
           (articles.length - 1) / itemsPerPage
         );
@@ -70,18 +66,16 @@ export default function ManagerArticle() {
           setCurrentPage((prev) => Math.max(prev - 1, 1));
         }
       } catch {
-        toast.error("Lỗi khi xoá bài viết!");
+        toast.error("Error deleting post!");
       }
     }
   };
 
-  // --- Phân trang ---
   const totalPages = Math.ceil(articles.length / itemsPerPage);
   const indexOfLast = currentPage * itemsPerPage;
   const indexOfFirst = indexOfLast - itemsPerPage;
   const currentArticles = articles.slice(indexOfFirst, indexOfLast);
 
-  // --- Mở modal Thêm / Sửa ---
   const openAddModal = () => {
     setEditingArticle(null);
     setShowModal(true);
@@ -92,10 +86,9 @@ export default function ManagerArticle() {
     setShowModal(true);
   };
 
-  // --- Lấy tên category ---
   const getCategoryName = (entryId?: number) => {
     const category = categories.find((c) => c.id === entryId);
-    return category ? category.name : "Không có";
+    return category ? category.name : "";
   };
 
   return (
@@ -181,7 +174,7 @@ export default function ManagerArticle() {
               ))
             ) : (
               <tr>
-                <td colSpan={7}>Không có bài viết nào</td>
+                <td colSpan={7}>No data</td>
               </tr>
             )}
           </tbody>

@@ -41,6 +41,13 @@
       "lastName": "F",
       "email": "maoop@gmail.com",
       "password": "111111"
+    },
+    {
+      "id": "2cb5",
+      "firstName": "di",
+      "lastName": "1",
+      "email": "jiren@gmail.com",
+      "password": "13131313"
     }
   ],
   "articles": [

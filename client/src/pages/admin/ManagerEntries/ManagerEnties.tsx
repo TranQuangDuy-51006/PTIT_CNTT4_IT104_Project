@@ -29,7 +29,7 @@ export default function ManagerEntries() {
     let check = false;
     categories.forEach((cat) => {
       if (cat.name == categoryName) {
-        toast.warning("Trùng kìa, nhập ngu vậy ????");
+        toast.warning("Duplicate data");
         check = true;
       }
     });

@@ -16,7 +16,7 @@ export const registerUser = createAsyncThunk(
       const user = await authService.signup(payload);
       return user;
     } catch (err: any) {
-      return rejectWithValue(err.message || "Đăng ký thất bại");
+      return rejectWithValue(err.message || "Registration failed");
     }
   }
 );

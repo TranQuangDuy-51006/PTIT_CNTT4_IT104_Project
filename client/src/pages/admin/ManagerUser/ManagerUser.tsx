@@ -5,7 +5,6 @@ import Pagination from "../../../components/Pagination/Pagination";
 import authService from "../../../service/authServices";
 import type { User } from "../../../utils/types";
 
-// Tạo type mới cho UI
 type UserUI = User & {
   name: string;
   username: string;
@@ -26,9 +25,9 @@ export default function ManagerUser() {
         setUsers(
           data.map((u) => ({
             ...u,
-            name: `${u.firstName} ${u.lastName}`, // tạo name từ first + last
-            username: `@${u.firstName.toLowerCase()}`, // tạo username từ firstName
-            status: "hoạt động", // default status
+            name: `${u.firstName} ${u.lastName}`,
+            username: `@${u.firstName.toLowerCase()}`,
+            status: "hoạt động",
           }))
         );
       } catch (error) {
@@ -40,14 +39,12 @@ export default function ManagerUser() {
     fetchUsers();
   }, []);
 
-  // Lọc user an toàn
   const filteredUsers = users.filter(
     (u) =>
       (u.name?.toLowerCase().includes(searchTerm.toLowerCase()) ?? false) ||
       (u.email?.toLowerCase().includes(searchTerm.toLowerCase()) ?? false)
   );
 
-  // Phân trang
   const usersPerPage = 3;
   const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
   const displayedUsers = filteredUsers.slice(
@@ -71,7 +68,7 @@ export default function ManagerUser() {
             value={searchTerm}
             onChange={(e) => {
               setSearchTerm(e.target.value);
-              setCurrentPage(1); // reset về trang 1 khi tìm kiếm
+              setCurrentPage(1);
             }}
           />
         </div>

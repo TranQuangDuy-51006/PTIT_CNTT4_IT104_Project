@@ -18,7 +18,7 @@ const authService = {
       (u) => u.email === payload.email && u.password === payload.password
     );
 
-    if (!user) throw new Error("Email hoặc mật khẩu không đúng");
+    if (!user) throw new Error("Incorrect email or password");
 
     localStorage.setItem("user", JSON.stringify(user));
     return user;

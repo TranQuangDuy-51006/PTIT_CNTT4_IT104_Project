@@ -34,18 +34,15 @@ export default function MyPost() {
     dispatch(fetchCategories());
   }, [dispatch]);
 
-  // 🔹 Reset phân trang khi dữ liệu hoặc từ khóa thay đổi
   useEffect(() => {
     setCurrentPage(1);
   }, [articles, keyword]);
 
-  // 🔹 Lấy tên danh mục
   const getCategoryName = (id?: number) => {
     const found = categories.find((c) => c.id === id);
     return found ? found.name : "Uncategorized";
   };
 
-  // 🔹 Lọc bài viết theo user hiện tại + keyword
   const userArticles = articles.filter(
     (a) =>
       a.userId === user.id &&
@@ -54,7 +51,6 @@ export default function MyPost() {
         a.content.toLowerCase().includes(keyword.toLowerCase()))
   );
 
-  // 🔹 Tính toán phân trang
   const totalPages = Math.ceil((userArticles?.length || 0) / itemsPerPage);
   const safeCurrentPage =
     currentPage > totalPages ? totalPages || 1 : currentPage;
@@ -65,13 +61,11 @@ export default function MyPost() {
     startIndex + itemsPerPage
   );
 
-  // 🔹 Mở modal sửa bài viết
   const handleEdit = (article: Article) => {
     setEditingArticle(article);
     setShowModal(true);
   };
 
-  // 🔹 Đóng modal
   const handleCloseModal = () => {
     setShowModal(false);
     setEditingArticle(null);
