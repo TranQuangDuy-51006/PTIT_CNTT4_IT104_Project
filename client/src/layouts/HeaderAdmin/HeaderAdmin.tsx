@@ -9,7 +9,11 @@ export default function HeaderAdmin() {
       <div className={styles.box}>
         <MdOutlineEmail className={styles.icon} />
         <IoNotificationsOutline className={styles.icon} />
-        <img src="#" alt="#" className={styles.avatar} />
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/019/879/186/large_2x/user-icon-on-transparent-background-free-png.png"
+          alt="#"
+          className={styles.avatar}
+        />
       </div>
     </header>
   );

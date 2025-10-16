@@ -6,171 +6,52 @@
       "lastName": "Duy",
       "email": "jiren@gmail.com",
       "password": "111111"
-    },
-    {
-      "id": "1c4a",
-      "firstName": "Tran",
-      "lastName": "Duy",
-      "email": "maoop@gmail.com",
-      "password": "111111"
-    },
-    {
-      "id": "eab1",
-      "firstName": "Tran",
-      "lastName": "Duy",
-      "email": "adc0510duy@gmail.com",
-      "password": "111111"
-    },
-    {
-      "id": "770c",
-      "firstName": "aa",
-      "lastName": "  aa",
-      "email": "13131@gmail.com",
-      "password": "131313"
-    },
-    {
-      "id": "d6b3",
-      "firstName": "WT",
-      "lastName": "Duy",
-      "email": "abc@gmail.com",
-      "password": "111111"
-    },
-    {
-      "id": "08b4",
-      "firstName": "Tao",
-      "lastName": "F",
-      "email": "maoop@gmail.com",
-      "password": "111111"
-    },
-    {
-      "id": "2cb5",
-      "firstName": "di",
-      "lastName": "1",
-      "email": "jiren@gmail.com",
-      "password": "13131313"
-    },
-    {
-      "id": "e3cc",
-      "firstName": "Tao",
-      "lastName": "ư",
-      "email": "jiren@gmail.com",
-      "password": "111111"
     }
   ],
   "articles": [
     {
-      "id": "d807",
-      "title": "A Độ mixi cho e xin bát cơm",
-      "content": "ALEXXANDER MAXPING",
+      "id": "8836",
+      "userId": "b01d",
+      "title": "Demo1",
+      "content": "Content Demo1",
       "mood": "3",
       "status": "public",
-      "image": "https://res.cloudinary.com/dxbxoyen9/image/upload/v1760086200/dw52p3dseow7sazpwvzb.jpg",
-      "date": "2025-10-10T08:50:02.765Z",
-      "entryId": "7fef"
+      "image": "https://res.cloudinary.com/dxbxoyen9/image/upload/v1760591984/jrnf0ov7mjsbclapqv6e.png",
+      "date": "2025-10-16T05:19:46.758Z",
+      "entryId": "4aeb"
     },
     {
-      "id": "2882",
-      "title": "Lil Nui là ai",
-      "content": "Ai mà biết được",
+      "id": "ef49",
+      "userId": "b01d",
+      "title": "2",
+      "content": "22222",
       "mood": "2",
       "status": "public",
-      "image": "https://res.cloudinary.com/dxbxoyen9/image/upload/v1760279701/ttafjhxuijwnayr5ur7y.jpg",
-      "date": "2025-10-12T14:35:04.144Z",
-      "entryId": "7fef"
-    },
-    {
-      "id": "d898",
-      "title": "trtrtrt4464",
-      "content": "ăewaeawe",
-      "mood": "4",
-      "status": "public",
-      "image": "https://res.cloudinary.com/dxbxoyen9/image/upload/v1760279721/xoout6mfsh5j93m30dxq.jpg",
-      "date": "2025-10-12T14:35:22.862Z",
-      "entryId": "40e1"
-    },
-    {
-      "id": "a975",
-      "title": "21111",
-      "content": "pppppppppp",
-      "mood": "3",
-      "status": "public",
-      "image": "https://res.cloudinary.com/dxbxoyen9/image/upload/v1760279913/jphe6xi7kwuoqa5v8t7g.png",
-      "date": "2025-10-14T15:19:30.348Z",
+      "image": "https://res.cloudinary.com/dxbxoyen9/image/upload/v1760592228/za1fyalbwrcavwlhnqkp.png",
+      "date": "2025-10-16T05:23:50.458Z",
       "entryId": "4aeb"
     },
     {
-      "id": "d80o",
-      "title": "A Độ mixi cho e xin bát cơm",
-      "content": "ALEXXANDER MAXPING",
-      "mood": "3",
-      "status": "public",
-      "image": "https://res.cloudinary.com/dxbxoyen9/image/upload/v1760086200/dw52p3dseow7sazpwvzb.jpg",
-      "date": "2025-10-10T08:50:02.765Z",
-      "entryId": "7fef"
-    },
-    {
-      "id": "288y",
-      "title": "Lil Nui là ai",
-      "content": "Ai mà biết được",
-      "mood": "2",
-      "status": "public",
-      "image": "https://res.cloudinary.com/dxbxoyen9/image/upload/v1760279701/ttafjhxuijwnayr5ur7y.jpg",
-      "date": "2025-10-12T14:35:04.144Z",
-      "entryId": "7fef"
-    },
-    {
-      "id": "d89g",
-      "title": "trtrtrt4464",
-      "content": "ăewaeawe",
+      "id": "4196",
+      "userId": "b01d",
+      "title": "3",
+      "content": "3333",
       "mood": "4",
       "status": "public",
-      "image": "https://res.cloudinary.com/dxbxoyen9/image/upload/v1760279721/xoout6mfsh5j93m30dxq.jpg",
-      "date": "2025-10-12T14:35:22.862Z",
-      "entryId": "40e1"
-    },
-    {
-      "id": "a9u6",
-      "title": "Edit1",
-      "userId": "b01d",
-      "content": "ối dồi ôi, trình là gì",
-      "mood": "4",
-      "status": "public",
-      "image": "https://res.cloudinary.com/dxbxoyen9/image/upload/v1760422355/gu164jhggwzucpc9aqj0.png",
-      "date": "2025-10-14T06:12:38.569Z",
-      "entryId": "4aeb"
-    },
-    {
-      "id": "b2e7",
-      "userId": "b01d",
-      "title": "0ooooo",
-      "content": "qeqeqeqeqeqeqeqeqeqe",
-      "mood": "3",
-      "status": "private",
-      "image": "https://res.cloudinary.com/dxbxoyen9/image/upload/v1760334999/qwbk3rpoxg5ovvvs4v1b.png",
-      "date": "2025-10-13T06:02:14.486Z",
+      "image": "https://res.cloudinary.com/dxbxoyen9/image/upload/v1760592242/axbzldyxdhy0vjhik3q3.png",
+      "date": "2025-10-16T05:24:10.117Z",
       "entryId": "7fef"
     },
     {
-      "id": "656e",
+      "id": "2958",
       "userId": "b01d",
-      "title": "Demo",
-      "content": "Content Demo",
-      "mood": "3",
-      "status": "private",
-      "image": "https://res.cloudinary.com/dxbxoyen9/image/upload/v1760336714/c0rignhussnxukn5c40a.png",
-      "date": "2025-10-13T06:26:08.113Z",
+      "title": "4",
+      "content": "444444444",
+      "mood": "4",
+      "status": "public",
+      "image": "https://res.cloudinary.com/dxbxoyen9/image/upload/v1760592267/hydghm0ipztgejrbbuqr.png",
+      "date": "2025-10-16T05:24:38.377Z",
       "entryId": "40e1"
-    },
-    {
-      "id": "a445",
-      "userId": "d6b3",
-      "title": "aaa",
-      "content": "Cuoi",
-      "mood": "3",
-      "status": "private",
-      "image": "https://res.cloudinary.com/dxbxoyen9/image/upload/v1760336846/rgbd3evd0r1xurc3umdu.png",
-      "date": "2025-10-13T06:27:26.758Z",
-      "entryId": "4aeb"
     }
   ],
   "categories": [

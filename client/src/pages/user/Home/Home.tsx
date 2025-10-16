@@ -20,7 +20,7 @@ export default function Home() {
   const { keyword } = useAppSelector((state) => state.search);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 1;
+  const itemsPerPage = 6;
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   useEffect(() => {
@@ -69,44 +69,39 @@ export default function Home() {
             <p>Loading articles...</p>
           ) : recentPosts.length > 0 ? (
             <div className={styles.postsGrid}>
-              {/* Bài viết lớn bên trái */}
-              <div className={styles.leftPost}>
-                <img
-                  src={recentPosts[recentPosts.length - 1].image}
-                  alt={recentPosts[recentPosts.length - 1].title}
-                />
+              <Link
+                to={`/detail/${recentPosts[0].id}`}
+                className={styles.leftPost}
+              >
+                <img src={recentPosts[0].image} alt={recentPosts[0].title} />
                 <div className={styles.postInfo}>
-                  <p className={styles.date}>
-                    Date: {recentPosts[recentPosts.length - 1].date}
-                  </p>
-                  <h3>{recentPosts[recentPosts.length - 1].title}</h3>
-                  <p className={styles.desc}>
-                    {recentPosts[recentPosts.length - 1].content}
-                  </p>
+                  <p className={styles.date}>Date: {recentPosts[0].date}</p>
+                  <h3>{recentPosts[0].title}</h3>
+                  <p className={styles.desc}>{recentPosts[0].content}</p>
                   <p className={styles.category}>
-                    {getCategoryName(
-                      recentPosts[recentPosts.length - 1].entryId
-                    )}
+                    {getCategoryName(recentPosts[0].entryId)}
                   </p>
                 </div>
-              </div>
+              </Link>
 
               <div className={styles.rightPosts}>
-                {recentPosts
-                  .slice(recentPosts.length - 3, recentPosts.length - 1)
-                  .map((post) => (
-                    <div className={styles.smallPost} key={post.id}>
-                      <img src={post.image} alt={post.title} />
-                      <div className={styles.postInfo}>
-                        <p className={styles.date}>Date: {post.date}</p>
-                        <h3>{post.title}</h3>
-                        <p className={styles.desc}>{post.content}</p>
-                        <p className={styles.category}>
-                          {getCategoryName(post.entryId)}
-                        </p>
-                      </div>
+                {recentPosts.slice(1, 3).map((post) => (
+                  <Link
+                    to={`/detail/${post.id}`}
+                    className={styles.smallPost}
+                    key={post.id}
+                  >
+                    <img src={post.image} alt={post.title} />
+                    <div className={styles.postInfo}>
+                      <p className={styles.date}>Date: {post.date}</p>
+                      <h3>{post.title}</h3>
+                      <p className={styles.desc}>{post.content}</p>
+                      <p className={styles.category}>
+                        {getCategoryName(post.entryId)}
+                      </p>
                     </div>
-                  ))}
+                  </Link>
+                ))}
               </div>
             </div>
           ) : (

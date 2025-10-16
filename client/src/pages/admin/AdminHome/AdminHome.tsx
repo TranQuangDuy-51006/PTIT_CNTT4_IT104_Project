@@ -5,12 +5,25 @@ import HeaderAdmin from "../../../layouts/HeaderAdmin/HeaderAdmin";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { deleteStorage, getStorage } from "../../../utils/storage";
 import { useEffect } from "react";
+import Swal from "sweetalert2";
 
 export default function AdminHome() {
   const navigate = useNavigate();
-  const handleLogOut = () => {
-    deleteStorage("ad");
-    navigate("/login");
+  const handleLogOut = async () => {
+    const result = await Swal.fire({
+      title: "Do you want to log out?",
+      text: "Log out",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+    });
+    if (result.isConfirmed) {
+      deleteStorage("ad");
+      navigate("/login");
+    }
   };
   useEffect(() => {
     const isAdmin = getStorage("ad");

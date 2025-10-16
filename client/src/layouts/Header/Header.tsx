@@ -21,6 +21,10 @@ export default function Header() {
     setDrop(drop === "none" ? "block" : "none");
   };
 
+  const gotoHome = () => {
+    navigate("/");
+  };
+
   const handleLogOut = () => {
     setIsLogin("");
     deleteStorage("user");
@@ -35,7 +39,7 @@ export default function Header() {
   return (
     <div className={styles.container}>
       <div className={styles.flex}>
-        <img src={logo} alt="logo" />
+        <img src={logo} alt="logo" onClick={gotoHome} />
         <span>RIKKEI_EDU _BLOG</span>
       </div>
 
